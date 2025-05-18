@@ -28,9 +28,10 @@ public class ProductosEntityes {
     @Column(nullable = false)
     private float precio;
 
-    @Column(nullable = false)
-    private int id_categoria;
-
-    @Column(nullable = false)
-    private int id_proveedor;
+    public ProductosEntityes(String nombre, String descripcion, int stock, float precio) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.stock = stock;
+        this.precio = precio;
+    }
 }

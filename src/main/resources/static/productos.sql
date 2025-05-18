@@ -3,7 +3,5 @@ CREATE TABLE Productos (
     nombre VARCHAR(255),
     descripcion TEXT,
     stock INT,
-    precio FLOAT,
-    id_categoria INT,
-    id_proveedor INT
+    precio FLOAT
 );

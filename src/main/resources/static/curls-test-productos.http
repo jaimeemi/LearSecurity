@@ -1,0 +1,45 @@
+### Crear Producto
+curl -X POST http://localhost:8085/producto/grabar \
+-H "Content-Type: application/json" \
+-d '{
+  "nombre": "Webcam HD",
+  "descripcion": "Cámara para videollamadas",
+  "stock": 12,
+  "precio": 75.0
+}'
+
+POST http://localhost:8085/producto/crear
+Content-Type: application/json
+{
+
+    "id": 1,
+    "nombre": "producto",
+    "descripcion": "descripcion",
+    "precio": 10,
+    "stock": 10
+}
+##################################################################################################################
+### Actualizar producto
+curl -X PUT http://localhost:8085/producto/actualizar/1 \
+-H "Content-Type: application/json" \
+-d '{
+  "nombre": "Webcam HD Pro",
+  "descripcion": "Cámara 1080p con micrófono",
+  "stock": 15,
+  "precio": 85.0
+}'
+
+PUT http://localhost:8085/producto/actualizar/2
+Content-Type: application/json
+
+{
+  "nombre": "Tablet Pro 10\"",
+  "descripcion": "Tablet con Android 13 y más RAM",
+  "stock": 10,
+  "precio": 350.0
+}
+##################################################################################################################
+### Eliminar producto
+curl -X DELETE http://localhost:8085/producto/eliminar/1
+
+DELETE http://localhost:8085/producto/eliminar/2

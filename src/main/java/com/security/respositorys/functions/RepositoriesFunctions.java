@@ -14,8 +14,6 @@ public class RepositoriesFunctions {
         entity.setDescripcion(dto.getDescripcion());
         entity.setPrecio(dto.getPrecio());
         entity.setStock(dto.getStock());
-        entity.setId_categoria(dto.getId_categoria());
-        entity.setId_proveedor(dto.getId_proveedor());
         return entity;
     }
 
@@ -26,8 +24,6 @@ public class RepositoriesFunctions {
         dto.setDescripcion(entity.getDescripcion());
         dto.setPrecio(entity.getPrecio());
         dto.setStock(entity.getStock());
-        dto.setId_categoria(entity.getId_categoria());
-        dto.setId_proveedor(entity.getId_proveedor());
         return dto;
     }
 

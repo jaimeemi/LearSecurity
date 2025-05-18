@@ -52,10 +52,9 @@ public class ProductosServicesImp implements IProductosServices {
         productoActualizado = RepositoriesFunctions.optionalProductoDTO( productosRepositoryes.findById(productoId) );
 
         productoActualizado.setNombre(productoDTO.getNombre());
+        productoActualizado.setDescripcion(productoDTO.getDescripcion());
         productoActualizado.setPrecio(productoDTO.getPrecio());
         productoActualizado.setStock(productoDTO.getStock());
-        productoActualizado.setId_categoria(productoDTO.getId_categoria());
-        productoActualizado.setId_proveedor(productoDTO.getId_proveedor());
 
         productosRepositoryes.save( RepositoriesFunctions.toEntity( productoActualizado ) );
 
@@ -71,8 +70,14 @@ public class ProductosServicesImp implements IProductosServices {
     public ProductoDTO eliminarProducto(int productoId) {
         ProductoDTO productoDTO = RepositoriesFunctions.optionalProductoDTO(  productosRepositoryes.findById(productoId) );
         if (productoDTO.equals(null))
-            return null;
-        else
+            return new ProductoDTO(99, "Producto No encontrado. No fue Eliminado", "", 0, 0.0f);
+        else {
+            removerProductoRepositorio(productoId);
             return productoDTO;
+        }
+    }
+
+    private void removerProductoRepositorio(int productoId) {
+        productosRepositoryes.deleteById(productoId);
     }
 }

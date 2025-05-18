@@ -1,20 +1,38 @@
 package com.security.models.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import org.springframework.validation.annotation.Validated;
+
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductoDTO {
+@JsonIgnoreProperties(ignoreUnknown = true)
+@Validated
+public class ProductoDTO implements Serializable {
+
 
     private int id;
+
+    @NonNull
     private String nombre;
+
+    @NonNull
     private String descripcion;
+
+    @NonNull
+    @Min(value = 1, message = "El stock debe ser mayor a 0")
     private int stock;
+
+    @NonNull
+    @DecimalMin(value = "0.01", message = "El precio no puede ser nulo y debe ser mayor a 0")
     private float precio;
-    private int id_categoria;
-    private int id_proveedor;
 
 }
