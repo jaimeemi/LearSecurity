@@ -1,0 +1,27 @@
+
+springdoc:
+  application:
+    name: security
+  swagger-ui:
+    operationsSorter: alpha
+    path: /swagger-ui.html
+    tagsSorter: alpha
+  api-docs:
+    path: /api-docs
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    username: sa
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  security:
+    user:
+      password: pass123
+      name: emilio
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: 'true'
