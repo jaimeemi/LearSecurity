@@ -3,6 +3,7 @@ package com.security.models.DTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,10 @@ public class ProductoDTO implements Serializable {
 
     private int id;
 
-    @NonNull
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
-    @NonNull
+    @NotBlank(message = "La descripción es obligatoria")
     private String descripcion;
 
     @NonNull

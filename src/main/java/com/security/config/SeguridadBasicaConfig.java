@@ -15,10 +15,11 @@ public class SeguridadBasicaConfig {
     @Bean
     public SecurityFilterChain FiltroSeguridad(HttpSecurity http) throws Exception {
         http. //Depreciado! ya no se usa -> csrf().disable() // no se necesita CSRF para APIs REST
-        csrf(csrf -> csrf.disable()). // Para API REST
+        csrf(csrf -> csrf.disable()). // Para API REST esta es la forma
         authorizeHttpRequests(auth -> auth
                 .requestMatchers("/h2-console/**").permitAll() // consola H2 libre
                 .requestMatchers(HttpMethod.GET, "/producto/**").permitAll() // solo GET públicos
+                .requestMatchers(HttpMethod.POST, "/producto/**").authenticated() // Metodos POST con autenticación
                 .anyRequest().authenticated() // el resto requiere login
         )
                 .httpBasic(Customizer.withDefaults()); // <-- Esto activa Basic Auth
@@ -26,9 +27,6 @@ public class SeguridadBasicaConfig {
             // permite usar H2 en navegador
 //              .headers(headers -> headers.frameOptions(config -> config.disable()));
 
-            /*
-            .httpBasic(); // autenticación básica
-         */
         return http.build();
     }
 }
